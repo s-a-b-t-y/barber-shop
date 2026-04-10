@@ -8,7 +8,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
         rel="stylesheet" />
-        <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -18,7 +18,9 @@
 
     <!-- NAV -->
     <nav>
-        <a href="index.html" id="name"><div class="nav-logo">Redoy Boss<span>Barber Shop</span></div></a>
+        <a href="index.html" id="name">
+            <div class="nav-logo">Redoy Boss<span>Barber Shop</span></div>
+        </a>
         <ul class="nav-links">
             <li><a href="index.html" onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
             <li><a href="#" onclick="showPage('hairstyle')" id="nav-hairstyle">Hairstyle</a></li>
@@ -197,28 +199,24 @@
                     <label>Additional Note</label>
                     <textarea id="bookNote" placeholder="Any special requests or hairstyle reference..."></textarea>
                 </div>
-
-                <div class="submit-section">
-                    <button class="btn-submit" onclick="submitBooking()">Confirm Booking ✓</button>
-                </div>
             </div>
 
             <!-- RIGHT: Payment -->
             <div class="payment-side">
                 <h2>Payment Options</h2>
-                <p>Tap a payment method to reveal QR code & account details.</p>
+                <p>You can make a payment now or pay later at the shop.</p>
 
-                <!-- 50% toggle -->
                 <div class="pay-toggle">
-                    <div class="pay-toggle-label">Pay <span>50% advance</span> now?</div>
+                    <div class="pay-toggle-label">Payment Preference:</div>
                     <div class="toggle-btns">
-                        <button class="toggle-btn yes" id="btn50yes" onclick="setPay50(true)">Yes (50%)</button>
-                        <button class="toggle-btn no" id="btn50no" onclick="setPay50(false)">No, Full</button>
+                        <button class="toggle-btn yes" id="btnPayNow" onclick="setPaymentMode('pay')">Pay Now</button>
+                        <button class="toggle-btn no" id="btnSkipPay" onclick="setPaymentMode('skip')">Skip
+                            Payment</button>
                     </div>
                 </div>
 
                 <!-- Payment cards -->
-                <div class="payment-cards">
+                <div class="payment-cards" id="paymentCardsDiv">
 
                     <!-- Bkash -->
                     <div class="pay-card bkash-card" id="card-bkash" onclick="toggleCard('bkash')">
@@ -290,57 +288,14 @@
                         </div>
                     </div>
 
-                    <!-- Rocket -->
-                    <div class="pay-card rocket-card" id="card-rocket" onclick="toggleCard('rocket')">
-                        <div class="pay-card-header">
-                            <div class="pay-card-logo">
-                                <div class="pay-logo-icon">🚀</div>
-                                <div>
-                                    <div class="pay-card-name">Rocket</div>
-                                    <div class="pay-number">Number: <span>01XXX-XXXXXX</span></div>
-                                </div>
-                            </div>
-                            <div class="pay-card-arrow">▶</div>
-                        </div>
-                        <div class="qr-section">
-                            <div class="qr-inner">
-                                <div class="qr-box" title="Replace with actual Rocket QR">
-                                    <img src="rocket-qr.png" alt="Rocket QR"
-                                        style="width:80px;height:80px;object-fit:cover;"
-                                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-                                    <div
-                                        style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:80px;height:80px;">
-                                        <div style="font-size:28px;">📱</div>
-                                        <div
-                                            style="font-size:8px;color:#8b1fa9;font-weight:700;letter-spacing:1px;margin-top:4px;">
-                                            QR CODE</div>
-                                    </div>
-                                </div>
-                                <div class="qr-info">
-                                    <h4>Scan to Pay via Rocket</h4>
-                                    <p>Send Money to our Rocket account. Screenshot the confirmation.</p>
-                                    <div class="qr-amount" id="rocket-amount">৳ —</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div><!-- /payment-cards -->
 
                 <!-- Send booking section -->
-                <div class="send-section">
-                    <h4>📤 Send Booking Confirmation Via</h4>
-                    <div class="send-btns">
-                        <button class="send-btn btn-messenger" onclick="sendVia('messenger')">
-                            <span>💬</span> Messenger
-                        </button>
-                        <button class="send-btn btn-whatsapp" onclick="sendVia('whatsapp')">
-                            <span>📱</span> WhatsApp
-                        </button>
-                        <button class="send-btn btn-email" onclick="sendVia('email')">
-                            <span>✉️</span> Email
-                        </button>
-                    </div>
+                <div class="send-section" style="margin-top: 30px;">
+                    <button class="btn-submit" style="width: 100%; padding: 16px; font-size: 1.2rem; cursor: pointer;"
+                        onclick="submitAndSendWhatsApp()">
+                        Confirm & Send to WhatsApp 📱
+                    </button>
                 </div>
 
             </div>

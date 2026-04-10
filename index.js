@@ -76,16 +76,29 @@ function bookStyle(name) {
 renderHS();
 
 // ---- PAYMENT LOGIC ----
-let pay50 = false; // default: full payment
+let paymentMode = 'pay'; // default: pay now
 let activeCard = null;
 
 // Set button states on load
-document.getElementById('btn50no').classList.add('selected');
+document.getElementById('btnPayNow').classList.add('selected');
 
-function setPay50(val) {
-    pay50 = val;
-    document.getElementById('btn50yes').classList.toggle('selected', val);
-    document.getElementById('btn50no').classList.toggle('selected', !val);
+function setPaymentMode(mode) {
+    paymentMode = mode;
+    document.getElementById('btnPayNow').classList.toggle('selected', mode === 'pay');
+    document.getElementById('btnSkipPay').classList.toggle('selected', mode === 'skip');
+    
+    const cardsDiv = document.getElementById('paymentCardsDiv');
+    if (mode === 'skip') {
+        cardsDiv.style.opacity = '0.5';
+        cardsDiv.style.pointerEvents = 'none';
+        if (activeCard) {
+            document.getElementById('card-' + activeCard).classList.remove('active');
+            activeCard = null;
+        }
+    } else {
+        cardsDiv.style.opacity = '1';
+        cardsDiv.style.pointerEvents = 'auto';
+    }
     updateAmounts();
 }
 
@@ -97,21 +110,24 @@ function getServicePrice() {
 
 function updateAmounts() {
     const price = getServicePrice();
-    const ids = ['bkash-amount', 'nagad-amount', 'rocket-amount'];
+    const ids = ['bkash-amount', 'nagad-amount'];
     ids.forEach(id => {
         const el = document.getElementById(id);
+        if (!el) return;
         if (!price) { el.textContent = '৳ —'; return; }
-        const amt = pay50 ? Math.round(price * 0.5) : price;
-        el.textContent = '৳ ' + amt + (pay50 ? ' (50%)' : ' (Full)');
+        el.textContent = '৳ ' + price;
     });
 }
 
 document.getElementById('serviceSelect').addEventListener('change', updateAmounts);
 
 function toggleCard(name) {
+    if (paymentMode === 'skip') return; // Cannot toggle if skipped
     const card = document.getElementById('card-' + name);
+    if (!card) return;
     if (activeCard && activeCard !== name) {
-        document.getElementById('card-' + activeCard).classList.remove('active');
+        const activeEl = document.getElementById('card-' + activeCard);
+        if (activeEl) activeEl.classList.remove('active');
     }
     if (activeCard === name) {
         card.classList.remove('active');
@@ -132,31 +148,19 @@ function getBookingMsg() {
     const time = document.getElementById('bookTime').value || '(time)';
     const note = document.getElementById('bookNote').value;
     const price = getServicePrice();
-    const payInfo = price ? (pay50 ? `50% Advance: ৳${Math.round(price * 0.5)}` : `Full Payment: ৳${price}`) : '';
+    
+    let payInfo = '';
+    if (paymentMode === 'skip') {
+        payInfo = price ? `Will pay at shop (৳${price})` : 'Will pay at shop';
+    } else {
+        let method = activeCard ? (activeCard.charAt(0).toUpperCase() + activeCard.slice(1)) : 'None (Pay Now selected but no card picked)';
+        payInfo = price ? `Paid via ${method}: ৳${price}` : `Paid via ${method}`;
+    }
 
     return `🪒 *Redoy Boss Barber Shop — New Booking*\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n✂️ Service: ${service}\n📅 Date: ${date}\n⏰ Time: ${time}\n💳 Payment: ${payInfo}${note ? '\n📝 Note: ' + note : ''}\n\nPlease confirm this appointment. Thank you!`;
 }
 
-function sendVia(channel) {
-    const msg = getBookingMsg();
-    const encoded = encodeURIComponent(msg);
-    // Replace these with actual contact details
-    const shopPhone = '8801700000000'; // your WhatsApp number
-    const shopEmail = 'redoybossbarber@gmail.com';
-    const messengerUser = 'redoybossbarber'; // FB page username
-
-    if (channel === 'whatsapp') {
-        window.open(`https://wa.me/${shopPhone}?text=${encoded}`, '_blank');
-    } else if (channel === 'messenger') {
-        window.open(`https://m.me/${messengerUser}?text=${encoded}`, '_blank');
-    } else if (channel === 'email') {
-        const subject = encodeURIComponent('New Appointment Booking - Redoy Boss Barber Shop');
-        window.open(`mailto:${shopEmail}?subject=${subject}&body=${encoded}`, '_blank');
-    }
-    showToast(`Opening ${channel === 'messenger' ? 'Messenger' : channel === 'whatsapp' ? 'WhatsApp' : 'Email'}...`);
-}
-
-function submitBooking() {
+function submitAndSendWhatsApp() {
     const name = document.getElementById('clientName').value;
     const phone = document.getElementById('clientPhone').value;
     const service = document.getElementById('serviceSelect').value;
@@ -167,7 +171,20 @@ function submitBooking() {
         showToast('⚠️ Please fill in all required fields.');
         return;
     }
-    showToast('✅ Booking confirmed! Please send via WhatsApp or Email to complete.');
+    
+    if (paymentMode === 'pay' && !activeCard) {
+        showToast('⚠️ Please select a payment method (bKash/Nagad) or choose "Skip Payment".');
+        return;
+    }
+
+    const msg = getBookingMsg();
+    const encoded = encodeURIComponent(msg);
+    const shopPhone = '8801700000000'; // Replace with actual WhatsApp number
+
+    showToast('✅ Booking confirmed! Opening WhatsApp...');
+    setTimeout(() => {
+        window.open(`https://wa.me/${shopPhone}?text=${encoded}`, '_blank');
+    }, 1000);
 }
 
 // ---- TOAST ----
