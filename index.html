@@ -1,320 +1,376 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Redoy Boss Barber Shop — Premium barbershop in Khulna. Book appointments online, view hairstyles, and pay via bKash or Nagad." />
     <title>Redoy Boss Barber Shop</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="index.css">
-</head>
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
 
-<body>
-
+  <body>
     <div class="cursor" id="cursor"></div>
     <div class="cursor-ring" id="cursorRing"></div>
 
     <!-- NAV -->
-    <nav>
-        <a href="index.html" id="name">
-            <div class="nav-logo">Redoy Boss<span>Barber Shop</span></div>
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html" onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
-            <li><a href="#" onclick="showPage('hairstyle')" id="nav-hairstyle">Hairstyle</a></li>
-            <li><a href="#" onclick="showPage('booking')" id="nav-booking">Booking & Payment</a></li>
-        </ul>
+    <nav id="mainNav">
+      <a href="index.html" id="name">
+        <div class="nav-logo">Redoy Boss<span>Barber Shop</span></div>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="index.html" onclick="showPage('home');closeMenu()" class="active" id="nav-home">Home</a>
+        </li>
+        <li>
+          <a href="#" onclick="showPage('hairstyle');closeMenu()" id="nav-hairstyle">Hairstyle</a>
+        </li>
+        <li>
+          <a href="#" onclick="openBookingPopup();closeMenu()" id="nav-booking">Booking &amp; Payment</a>
+        </li>
+      </ul>
     </nav>
 
     <!-- ==================== HOME PAGE ==================== -->
     <div class="page active" id="home">
-        <section id="home-hero"
-            style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 60px 60px;overflow:hidden;">
-            <div class="home-bg"></div>
-            <div class="barber-pole"></div>
-            <div class="hero-tag">✦ Est. 2018 — Premium Barbershop — Khulna</div>
-            <h1 class="hero-title">
-                <span class="outline">Redoy</span>
-                <span class="gold">Boss</span>
-                <span>Barber</span>
-            </h1>
-            <p class="hero-sub">Where every cut tells a story. Precision grooming, classic craft, and modern style—all
-                under one roof in the heart of Khulna.</p>
-            <div class="hero-btns">
-                <button class="btn-gold" onclick="showPage('booking')">Book Appointment</button>
-                <button class="btn-outline" onclick="showPage('hairstyle')">View Hairstyles</button>
-            </div>
-            <div class="home-stats">
-                <div>
-                    <div class="stat-num">5K+</div>
-                    <div class="stat-label">Happy Clients</div>
-                </div>
-                <div>
-                    <div class="stat-num">7+</div>
-                    <div class="stat-label">Years of Craft</div>
-                </div>
-                <div>
-                    <div class="stat-num">30+</div>
-                    <div class="stat-label">Styles Offered</div>
-                </div>
-                <div>
-                    <div class="stat-num">4.9★</div>
-                    <div class="stat-label">Customer Rating</div>
-                </div>
-            </div>
-        </section>
+      <section id="home-hero">
+        <div class="home-bg"></div>
+        <div class="barber-pole"></div>
+        <div class="hero-tag">✦ Est. 2018 — Premium Barbershop — Khulna</div>
+        <h1 class="hero-title">
+          <span class="outline">Redoy</span>
+          <span class="gold">Boss</span>
+          <span>Barber</span>
+        </h1>
+        <p class="hero-sub">
+          Where every cut tells a story. Precision grooming, classic craft, and
+          modern style—all under one roof in the heart of Khulna.
+        </p>
+        <div class="hero-btns">
+          <button class="btn-gold" onclick="openBookingPopup()">
+            Book Appointment
+          </button>
+          <button class="btn-outline" onclick="showPage('hairstyle')">
+            View Hairstyles
+          </button>
+        </div>
+        <div class="home-stats">
+          <div>
+            <div class="stat-num">5K+</div>
+            <div class="stat-label">Happy Clients</div>
+          </div>
+          <div>
+            <div class="stat-num">7+</div>
+            <div class="stat-label">Years of Craft</div>
+          </div>
+          <div>
+            <div class="stat-num">30+</div>
+            <div class="stat-label">Styles Offered</div>
+          </div>
+          <div>
+            <div class="stat-num">4.9★</div>
+            <div class="stat-label">Customer Rating</div>
+          </div>
+        </div>
+      </section>
 
-        <section class="services-section">
-            <div class="section-header">
-                <div class="section-tag">✦ What We Offer</div>
-                <h2 class="section-title">Our Services</h2>
+      <section class="services-section">
+        <div class="section-header">
+          <div class="section-tag">✦ What We Offer</div>
+          <h2 class="section-title">Our Services</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">✂️</div>
+            <div class="service-name">Classic Haircut</div>
+            <div class="service-desc">
+              Traditional barber cut with precision scissors and clipper work.
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">✂️</div>
-                    <div class="service-name">Classic Haircut</div>
-                    <div class="service-desc">Traditional barber cut with precision scissors and clipper work.</div>
-                    <div class="service-price">৳150</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🪒</div>
-                    <div class="service-name">Beard Shave & Trim</div>
-                    <div class="service-desc">Hot towel shave and beard shaping with straight razor finish.</div>
-                    <div class="service-price">৳120</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">💈</div>
-                    <div class="service-name">Fade & Taper</div>
-                    <div class="service-desc">Modern skin fade, low, mid and high taper with crisp lines.</div>
-                    <div class="service-price">৳200</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🧴</div>
-                    <div class="service-name">Hair Treatment</div>
-                    <div class="service-desc">Deep conditioning and scalp treatment for healthy, shiny hair.</div>
-                    <div class="service-price">৳300</div>
-                </div>
+            <div class="service-price">৳150</div>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🪒</div>
+            <div class="service-name">Beard Shave &amp; Trim</div>
+            <div class="service-desc">
+              Hot towel shave and beard shaping with straight razor finish.
             </div>
-        </section>
+            <div class="service-price">৳120</div>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">💈</div>
+            <div class="service-name">Fade &amp; Taper</div>
+            <div class="service-desc">
+              Modern skin fade, low, mid and high taper with crisp lines.
+            </div>
+            <div class="service-price">৳200</div>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🧴</div>
+            <div class="service-name">Hair Treatment</div>
+            <div class="service-desc">
+              Deep conditioning and scalp treatment for healthy, shiny hair.
+            </div>
+            <div class="service-price">৳300</div>
+          </div>
+        </div>
+      </section>
 
-        <footer>
-            <div class="footer-logo">Redoy Boss Barber</div>
-            <div class="footer-copy">© 2025 Redoy Boss Barber Shop. All rights reserved.</div>
-            <div class="footer-socials">
-                <a class="footer-social" href="#" title="Facebook">𝕗</a>
-                <a class="footer-social" href="#" title="Instagram">📸</a>
-                <a class="footer-social" href="#" title="WhatsApp">💬</a>
-            </div>
-        </footer>
+      <footer>
+        <div class="footer-logo">Redoy Boss Barber</div>
+        <div class="footer-copy">
+          © 2025 Redoy Boss Barber Shop. All rights reserved.
+        </div>
+        <div class="footer-socials">
+          <a class="footer-social" href="#" title="Facebook">𝕗</a>
+          <a class="footer-social" href="#" title="Instagram">📸</a>
+          <a class="footer-social" href="#" title="WhatsApp">💬</a>
+        </div>
+      </footer>
     </div>
 
     <!-- ==================== HAIRSTYLE PAGE ==================== -->
     <div class="page" id="hairstyle">
-        <div class="hs-hero">
-            <div class="section-tag">✦ Our Collection</div>
-            <h2 class="section-title">Hairstyle Gallery</h2>
-            <p>Choose your next look from our curated collection of premium styles</p>
+      <div class="hs-hero">
+        <div class="section-tag">✦ Our Collection</div>
+        <h2 class="section-title">Hairstyle Gallery</h2>
+        <p>
+          Choose your next look from our curated collection of premium styles
+        </p>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterHS(this, 'all')">
+          All Styles
+        </button>
+        <button class="filter-btn" onclick="filterHS(this, 'fade')">
+          Fades
+        </button>
+        <button class="filter-btn" onclick="filterHS(this, 'classic')">
+          Classic
+        </button>
+        <button class="filter-btn" onclick="filterHS(this, 'modern')">
+          Modern
+        </button>
+        <button class="filter-btn" onclick="filterHS(this, 'beard')">
+          Beard
+        </button>
+      </div>
+
+      <div class="hairstyle-grid" id="hsGrid"></div>
+
+      <footer style="margin-top: 80px">
+        <div class="footer-logo">Redoy Boss Barber</div>
+        <div class="footer-copy">© 2025 Redoy Boss Barber Shop.</div>
+        <div class="footer-socials">
+          <a class="footer-social" href="#">𝕗</a>
+          <a class="footer-social" href="#">📸</a>
         </div>
-
-        <div class="filter-bar">
-            <button class="filter-btn active" onclick="filterHS(this,'all')">All Styles</button>
-            <button class="filter-btn" onclick="filterHS(this,'fade')">Fades</button>
-            <button class="filter-btn" onclick="filterHS(this,'classic')">Classic</button>
-            <button class="filter-btn" onclick="filterHS(this,'modern')">Modern</button>
-            <button class="filter-btn" onclick="filterHS(this,'beard')">Beard</button>
-        </div>
-
-        <div class="hairstyle-grid" id="hsGrid"></div>
-
-        <footer style="margin-top:80px;">
-            <div class="footer-logo">Redoy Boss Barber</div>
-            <div class="footer-copy">© 2025 Redoy Boss Barber Shop.</div>
-            <div class="footer-socials">
-                <a class="footer-social" href="#">𝕗</a>
-                <a class="footer-social" href="#">📸</a>
-            </div>
-        </footer>
+      </footer>
     </div>
 
-    <!-- ==================== BOOKING & PAYMENT PAGE ==================== -->
-    <div class="page" id="booking">
-        <div style="text-align:center;margin-bottom:60px;">
+    <!-- ==================== BOOKING POPUP OVERLAY ==================== -->
+    <div class="popup-overlay" id="bookingOverlay" onclick="closeBookingPopupOnBackdrop(event)">
+      <div class="popup-container" id="bookingPopup">
+
+        <!-- STEP 1: BOOKING FORM -->
+        <div class="popup-step" id="stepBooking">
+          <button class="popup-close" onclick="closeBookingPopup()" aria-label="Close">✕</button>
+          <div class="popup-header">
             <div class="section-tag">✦ Reserve Your Seat</div>
-            <h2 class="section-title">Booking & Payment</h2>
+            <h2 class="popup-title">Book Appointment</h2>
+            <p class="popup-sub">Fill in your details and we'll confirm your slot.</p>
+          </div>
+
+          <div class="popup-body">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="clientName">Your Name</label>
+                <input type="text" id="clientName" placeholder="Rahim Uddin" autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="clientPhone">Phone Number</label>
+                <input type="tel" id="clientPhone" placeholder="+880 1XXX-XXXXXX" autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="serviceSelect">Select Service</label>
+              <select id="serviceSelect">
+                <option value="">— Choose a service —</option>
+                <option value="Classic Haircut - ৳150">Classic Haircut — ৳150</option>
+                <option value="Beard Shave &amp; Trim - ৳120">Beard Shave &amp; Trim — ৳120</option>
+                <option value="Fade &amp; Taper - ৳200">Fade &amp; Taper — ৳200</option>
+                <option value="Hair Treatment - ৳300">Hair Treatment — ৳300</option>
+                <option value="Full Package - ৳450">Full Package — ৳450</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bookDate">Preferred Date</label>
+                <input type="date" id="bookDate" />
+              </div>
+              <div class="form-group">
+                <label for="bookTime">Preferred Time</label>
+                <select id="bookTime">
+                  <option value="">— Pick a time —</option>
+                  <option>10:00 AM</option>
+                  <option>11:00 AM</option>
+                  <option>12:00 PM</option>
+                  <option>02:00 PM</option>
+                  <option>03:00 PM</option>
+                  <option>04:00 PM</option>
+                  <option>05:00 PM</option>
+                  <option>06:00 PM</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="bookNote">Additional Note</label>
+              <textarea
+                id="bookNote"
+                placeholder="Any special requests or hairstyle reference..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="popup-footer">
+            <button class="btn-submit" onclick="goToPaymentStep()">
+              Next: Payment &amp; Confirm →
+            </button>
+          </div>
         </div>
 
-        <div class="booking-grid">
-            <!-- LEFT: Form -->
-            <div class="booking-form-side">
-                <h2>Book Your Appointment</h2>
-                <p>Fill in your details and we'll confirm your slot.</p>
+        <!-- STEP 2: PAYMENT -->
+        <div class="popup-step" id="stepPayment" style="display:none;">
+          <button class="popup-close" onclick="closeBookingPopup()" aria-label="Close">✕</button>
+          <div class="popup-header">
+            <div class="section-tag">✦ Optional Payment</div>
+            <h2 class="popup-title">Pay via QR Code</h2>
+            <div class="pay-reminder">
+              💡 <strong>Pay at least 50%</strong> to confirm your slot. Payment is <em>optional</em> — you can also pay at the shop.
+            </div>
+          </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" id="clientName" placeholder="Rahim Uddin" />
-                    </div>
-                    <div class="form-group">
-                        <label>Phone Number</label>
-                        <input type="tel" id="clientPhone" placeholder="+880 1XXX-XXXXXX" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Select Service</label>
-                    <select id="serviceSelect">
-                        <option value="">— Choose a service —</option>
-                        <option value="Classic Haircut - ৳150">Classic Haircut — ৳150</option>
-                        <option value="Beard Shave & Trim - ৳120">Beard Shave & Trim — ৳120</option>
-                        <option value="Fade & Taper - ৳200">Fade & Taper — ৳200</option>
-                        <option value="Hair Treatment - ৳300">Hair Treatment — ৳300</option>
-                        <option value="Full Package - ৳450">Full Package — ৳450</option>
-                    </select>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Preferred Date</label>
-                        <input type="date" id="bookDate" />
-                    </div>
-                    <div class="form-group">
-                        <label>Preferred Time</label>
-                        <select id="bookTime">
-                            <option value="">— Pick a time —</option>
-                            <option>10:00 AM</option>
-                            <option>11:00 AM</option>
-                            <option>12:00 PM</option>
-                            <option>02:00 PM</option>
-                            <option>03:00 PM</option>
-                            <option>04:00 PM</option>
-                            <option>05:00 PM</option>
-                            <option>06:00 PM</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Additional Note</label>
-                    <textarea id="bookNote" placeholder="Any special requests or hairstyle reference..."></textarea>
-                </div>
+          <div class="popup-body">
+            <!-- Payment Method Tabs -->
+            <div class="pay-tab-bar">
+              <button class="pay-tab active" id="tab-bkash" onclick="switchPayTab('bkash')">
+                <span class="pay-tab-icon bkash-icon">b</span> bKash
+              </button>
+              <button class="pay-tab" id="tab-nagad" onclick="switchPayTab('nagad')">
+                <span class="pay-tab-icon nagad-icon">N</span> Nagad
+              </button>
+              <button class="pay-tab skip-tab" id="tab-skip" onclick="switchPayTab('skip')">
+                ✕ Skip
+              </button>
             </div>
 
-            <!-- RIGHT: Payment -->
-            <div class="payment-side">
-                <h2>Payment Options</h2>
-                <p>You can make a payment now or pay later at the shop.</p>
-
-                <div class="pay-toggle">
-                    <div class="pay-toggle-label">Payment Preference:</div>
-                    <div class="toggle-btns">
-                        <button class="toggle-btn yes" id="btnPayNow" onclick="setPaymentMode('pay')">Pay Now</button>
-                        <button class="toggle-btn no" id="btnSkipPay" onclick="setPaymentMode('skip')">Skip
-                            Payment</button>
-                    </div>
+            <!-- bKash Panel -->
+            <div class="pay-panel" id="panel-bkash">
+              <div class="qr-popup-wrap bkash-glow">
+                <div class="qr-popup-box">
+                  <img src="bkash-qr.png" alt="bKash QR Code"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                  <div class="qr-placeholder-icon" style="display:none;">
+                    <div>📱</div>
+                    <div class="qr-label bkash-label">bKash QR</div>
+                  </div>
                 </div>
-
-                <!-- Payment cards -->
-                <div class="payment-cards" id="paymentCardsDiv">
-
-                    <!-- Bkash -->
-                    <div class="pay-card bkash-card" id="card-bkash" onclick="toggleCard('bkash')">
-                        <div class="pay-card-header">
-                            <div class="pay-card-logo">
-                                <div class="pay-logo-icon">b</div>
-                                <div>
-                                    <div class="pay-card-name">bKash</div>
-                                    <div class="pay-number">Number: <span>01XXX-XXXXXX</span></div>
-                                </div>
-                            </div>
-                            <div class="pay-card-arrow">▶</div>
-                        </div>
-                        <div class="qr-section">
-                            <div class="qr-inner">
-                                <div class="qr-box" title="Replace with actual bKash QR">
-                                    <img src="bkash-qr.png" alt="bKash QR"
-                                        style="width:80px;height:80px;object-fit:cover;"
-                                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-                                    <div
-                                        style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:80px;height:80px;">
-                                        <div style="font-size:28px;">📱</div>
-                                        <div
-                                            style="font-size:8px;color:#e2136e;font-weight:700;letter-spacing:1px;margin-top:4px;">
-                                            QR CODE</div>
-                                    </div>
-                                </div>
-                                <div class="qr-info">
-                                    <h4>Scan to Pay via bKash</h4>
-                                    <p>Send Money to our bKash merchant account. Take a screenshot as proof.</p>
-                                    <div class="qr-amount" id="bkash-amount">৳ —</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Nagad -->
-                    <div class="pay-card nagad-card" id="card-nagad" onclick="toggleCard('nagad')">
-                        <div class="pay-card-header">
-                            <div class="pay-card-logo">
-                                <div class="pay-logo-icon">N</div>
-                                <div>
-                                    <div class="pay-card-name">Nagad</div>
-                                    <div class="pay-number">Number: <span>01XXX-XXXXXX</span></div>
-                                </div>
-                            </div>
-                            <div class="pay-card-arrow">▶</div>
-                        </div>
-                        <div class="qr-section">
-                            <div class="qr-inner">
-                                <div class="qr-box" title="Replace with actual Nagad QR">
-                                    <img src="nagad-qr.png" alt="Nagad QR"
-                                        style="width:80px;height:80px;object-fit:cover;"
-                                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-                                    <div
-                                        style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:80px;height:80px;">
-                                        <div style="font-size:28px;">📱</div>
-                                        <div
-                                            style="font-size:8px;color:#f7941d;font-weight:700;letter-spacing:1px;margin-top:4px;">
-                                            QR CODE</div>
-                                    </div>
-                                </div>
-                                <div class="qr-info">
-                                    <h4>Scan to Pay via Nagad</h4>
-                                    <p>Send Money to our Nagad account. Keep your transaction ID ready.</p>
-                                    <div class="qr-amount" id="nagad-amount">৳ —</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div><!-- /payment-cards -->
-
-                <!-- Send booking section -->
-                <div class="send-section" style="margin-top: 30px;">
-                    <button class="btn-submit" style="width: 100%; padding: 16px; font-size: 1.2rem; cursor: pointer;"
-                        onclick="submitAndSendWhatsApp()">
-                        Confirm & Send to WhatsApp 📱
-                    </button>
+                <div class="qr-popup-info">
+                  <div class="qr-method-name bkash-text">bKash</div>
+                  <div class="qr-method-num">Number: <span>01XXX-XXXXXX</span></div>
+                  <div class="qr-pay-amount" id="bkash-amt">৳ —</div>
+                  <p class="qr-hint">Scan the QR with your bKash app. Screenshot your payment as proof.</p>
                 </div>
-
+              </div>
+              <!-- Payment confirmation input -->
+              <div class="form-group pay-confirm-group">
+                <label for="bkashTxId">bKash Transaction ID <span class="optional-tag">(optional)</span></label>
+                <input type="text" id="bkashTxId" placeholder="e.g. 8N6KXXXX" />
+              </div>
             </div>
-        </div><!-- /booking-grid -->
 
-        <footer style="margin-top:80px;">
-            <div class="footer-logo">Redoy Boss Barber</div>
-            <div class="footer-copy">© 2025 Redoy Boss Barber Shop.</div>
-            <div class="footer-socials">
-                <a class="footer-social" href="#">𝕗</a>
-                <a class="footer-social" href="#">📸</a>
+            <!-- Nagad Panel -->
+            <div class="pay-panel" id="panel-nagad" style="display:none;">
+              <div class="qr-popup-wrap nagad-glow">
+                <div class="qr-popup-box">
+                  <img src="nagad-qr.png" alt="Nagad QR Code"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                  <div class="qr-placeholder-icon" style="display:none;">
+                    <div>📱</div>
+                    <div class="qr-label nagad-label">Nagad QR</div>
+                  </div>
+                </div>
+                <div class="qr-popup-info">
+                  <div class="qr-method-name nagad-text">Nagad</div>
+                  <div class="qr-method-num">Number: <span>01XXX-XXXXXX</span></div>
+                  <div class="qr-pay-amount nagad-amount" id="nagad-amt">৳ —</div>
+                  <p class="qr-hint">Scan with your Nagad app. Keep your transaction ID ready.</p>
+                </div>
+              </div>
+              <div class="form-group pay-confirm-group">
+                <label for="nagadTxId">Nagad Transaction ID <span class="optional-tag">(optional)</span></label>
+                <input type="text" id="nagadTxId" placeholder="e.g. TXN123456" />
+              </div>
             </div>
-        </footer>
+
+            <!-- Skip Panel -->
+            <div class="pay-panel" id="panel-skip" style="display:none;">
+              <div class="skip-pay-card">
+                <div class="skip-icon">🏪</div>
+                <div class="skip-title">Pay at the Shop</div>
+                <p class="skip-desc">No advance payment needed. You'll pay the full amount when you arrive at the shop.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="popup-footer pay-footer-btns">
+            <button class="btn-back" onclick="goToBookingStep()">← Back</button>
+            <button class="btn-submit" onclick="goToMessageStep()">
+              Review Message →
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3: MESSAGE PREVIEW -->
+        <div class="popup-step" id="stepMessage" style="display:none;">
+          <button class="popup-close" onclick="closeBookingPopup()" aria-label="Close">✕</button>
+          <div class="popup-header">
+            <div class="section-tag">✦ Almost Done!</div>
+            <h2 class="popup-title">Your Booking Message</h2>
+            <p class="popup-sub">Review this message. Tap <strong>Send</strong> to open WhatsApp.</p>
+          </div>
+
+          <div class="popup-body">
+            <div class="message-preview-box">
+              <div class="message-bubble" id="msgPreview"></div>
+            </div>
+            <p class="msg-hint">This message will be sent to the barber's WhatsApp. You can edit it before sending.</p>
+          </div>
+
+          <div class="popup-footer pay-footer-btns">
+            <button class="btn-back" onclick="goToPaymentStep()">← Back</button>
+            <button class="btn-send" onclick="sendToWhatsApp()">
+              📱 Send to WhatsApp
+            </button>
+          </div>
+        </div>
+
+      </div>
     </div>
+    <!-- /popup -->
 
     <!-- Toast -->
     <div class="toast" id="toast"></div>
 
     <script src="index.js"></script>
-</body>
-
+  </body>
 </html>
