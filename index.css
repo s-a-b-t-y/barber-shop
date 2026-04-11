@@ -638,6 +638,7 @@ nav a#name {
     cursor: none;
     transition: all 0.4s;
     position: relative;
+    border-radius: 18px;
 }
 
 .hs-card:hover {
