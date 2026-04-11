@@ -182,7 +182,7 @@
       <div class="footer-copy">© 2025 Redoy Boss Barber Shop.</div>
       <div class="footer-socials">
         <a class="footer-social" href="https://www.facebook.com/reday.sorker.3" target="_blank">𝕗</a>
-        <a class="footer-social" href="#">📸</a>
+        <a class="footer-social" href="https://www.instagram.com/redaysorkar?igsh=dmIzNHgwNGYzaWI1" target="_blank">📸</a>
       </div>
     </footer>
   </div>
@@ -283,9 +283,9 @@
             <button class="pay-tab active" id="tab-bkash" onclick="switchPayTab('bkash')">
               <span class="pay-tab-icon bkash-icon"><img src="library/paymentLogo/bkash.jpg" alt="bkashLogo"></span> bKash
             </button>
-            <button class="pay-tab" id="tab-nagad" onclick="switchPayTab('nagad')">
+            <!-- <button class="pay-tab" id="tab-nagad" onclick="switchPayTab('nagad')">
               <span class="pay-tab-icon nagad-icon"><img src="library/paymentLogo/nagad.jpg" alt="nagadLogo"></span> Nagad
-            </button>
+            </button> -->
             <button class="pay-tab skip-tab" id="tab-skip" onclick="switchPayTab('skip')">
               <i class="hgi hgi-stroke hgi-cancel-circle"></i> Skip
             </button>
@@ -295,7 +295,7 @@
           <div class="pay-panel" id="panel-bkash">
             <div class="qr-popup-wrap bkash-glow">
               <div class="qr-popup-box">
-                <img src="bkash-qr.png" alt="bKash QR Code"
+                <img src="library/paymentQR-Code/bkashQR.jpg" alt="bKash QR Code"
                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                 <div class="qr-placeholder-icon" style="display:none;">
                   <div>📱</div>
@@ -304,9 +304,9 @@
               </div>
               <div class="qr-popup-info">
                 <div class="qr-method-name bkash-text">bKash</div>
-                <div class="qr-method-num">Number: <span>01XXX-XXXXXX</span></div>
+                <div class="qr-method-num">Number: <span>+880 1916-401604</span></div>
                 <div class="qr-pay-amount" id="bkash-amt">৳ —</div>
-                <p class="qr-hint">Scan the QR with your bKash app. Screenshot your payment as proof.</p>
+                <p class="qr-hint"><b>Scan the QR with your bKash app or Pay Manually. Screenshot your payment as proof & <i>Also add the Screenshot on the appointment message.</i></b></p>
               </div>
             </div>
             <!-- Payment confirmation input -->
@@ -317,7 +317,7 @@
           </div>
 
           <!-- Nagad Panel -->
-          <div class="pay-panel" id="panel-nagad" style="display:none;">
+          <!-- <div class="pay-panel" id="panel-nagad" style="display:none;">
             <div class="qr-popup-wrap nagad-glow">
               <div class="qr-popup-box">
                 <img src="nagad-qr.png" alt="Nagad QR Code"
@@ -338,7 +338,7 @@
               <label for="nagadTxId">Nagad Transaction ID <span class="optional-tag">(optional)</span></label>
               <input type="text" id="nagadTxId" placeholder="e.g. TXN123456" />
             </div>
-          </div>
+          </div> -->
 
           <!-- Skip Panel -->
           <div class="pay-panel" id="panel-skip" style="display:none;">

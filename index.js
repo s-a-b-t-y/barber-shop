@@ -289,7 +289,7 @@ function buildBookingMessage() {
 
   if (note) msg += `\n📝 Note: ${note}`;
 
-  msg += `\n\nPlease confirm this appointment. Thank you! 🙏`;
+  msg += `\n\nPlease confirm this appointment. I'll be there on time \n Thank you! 🙏`;
 
   return msg;
 }
@@ -298,7 +298,7 @@ function buildBookingMessage() {
 function sendToWhatsApp() {
   const msg = buildBookingMessage();
   const encoded = encodeURIComponent(msg);
-  const shopPhone = "8801620534331"; // ← Replace with actual WhatsApp number
+  const shopPhone = "8801916401604";
 
   showToast("✅ Opening WhatsApp...");
   setTimeout(() => {
