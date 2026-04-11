@@ -21,21 +21,27 @@
       <a href="index.html" id="name">
         <div class="nav-logo">Redoy Boss<span>Barber Shop</span></div>
       </a>
+      <!-- Desktop links (hidden on mobile by CSS) -->
+      <ul class="nav-links nav-desktop" id="navLinksDesktop">
+        <li><a href="index.html" onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
+        <li><a href="#" onclick="showPage('hairstyle')" id="nav-hairstyle">Hairstyle</a></li>
+        <li><a href="#" onclick="openBookingPopup()" id="nav-booking">Booking &amp; Payment</a></li>
+      </ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </button>
-      <ul class="nav-links" id="navLinks">
-        <li>
-          <a href="index.html" onclick="showPage('home');closeMenu()" class="active" id="nav-home">Home</a>
-        </li>
-        <li>
-          <a href="#" onclick="showPage('hairstyle');closeMenu()" id="nav-hairstyle">Hairstyle</a>
-        </li>
-        <li>
-          <a href="#" onclick="openBookingPopup();closeMenu()" id="nav-booking">Booking &amp; Payment</a>
-        </li>
-      </ul>
     </nav>
+
+    <!-- MOBILE MENU OVERLAY (outside nav to avoid stacking-context clip) -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="handleNavOverlayClick(event)">
+      <button class="nav-close-btn" onclick="closeMenu()" aria-label="Close menu">✕</button>
+      <div class="mobile-menu-brand">Redoy Boss</div>
+      <ul class="mobile-menu-links">
+        <li><a href="index.html" onclick="showPage('home');closeMenu()" class="active" id="mob-nav-home">Home</a></li>
+        <li><a href="#" onclick="showPage('hairstyle');closeMenu()" id="mob-nav-hairstyle">Hairstyle</a></li>
+        <li><a href="#" onclick="openBookingPopup();closeMenu()" id="mob-nav-booking">Booking &amp; Payment</a></li>
+      </ul>
+    </div>
 
     <!-- ==================== HOME PAGE ==================== -->
     <div class="page active" id="home">

@@ -19,28 +19,33 @@ if (cursor && ring) {
 
 // ---- HAMBURGER MENU ----
 function toggleMenu() {
-  const nav  = document.getElementById("navLinks");
-  const btn  = document.getElementById("hamburger");
-  const open = nav.classList.toggle("open");
+  const overlay = document.getElementById("mobileMenuOverlay");
+  const btn     = document.getElementById("hamburger");
+  const open    = overlay.classList.toggle("open");
   btn.classList.toggle("open", open);
   document.body.style.overflow = open ? "hidden" : "";
 }
 
 function closeMenu() {
-  const nav = document.getElementById("navLinks");
-  const btn = document.getElementById("hamburger");
-  nav.classList.remove("open");
-  btn.classList.remove("open");
+  const overlay = document.getElementById("mobileMenuOverlay");
+  const btn     = document.getElementById("hamburger");
+  if (overlay) overlay.classList.remove("open");
+  if (btn)     btn.classList.remove("open");
   document.body.style.overflow = "";
 }
 
-// Close menu when clicking outside
-document.addEventListener("click", (e) => {
-  const nav = document.getElementById("navLinks");
-  const btn = document.getElementById("hamburger");
-  if (nav.classList.contains("open") &&
-      !nav.contains(e.target) && !btn.contains(e.target)) {
+// Clicking the dark backdrop (not a child) closes the menu
+function handleNavOverlayClick(e) {
+  if (e.target === document.getElementById("mobileMenuOverlay")) {
     closeMenu();
+  }
+}
+
+// ESC key closes menu or popup
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeMenu();
+    closeBookingPopup();
   }
 });
 
@@ -49,11 +54,17 @@ function showPage(name) {
   document.querySelectorAll(".page").forEach((p) => p.classList.remove("active"));
   const page = document.getElementById(name);
   if (page) page.classList.add("active");
-  document.querySelectorAll(".nav-links a").forEach((a) => a.classList.remove("active"));
-  const navLink = document.getElementById("nav-" + name);
-  if (navLink) navLink.classList.add("active");
+
+  // Update active link in BOTH desktop nav and mobile menu
+  document.querySelectorAll(".nav-links a, .mobile-menu-links a").forEach((a) => a.classList.remove("active"));
+  const desktopLink = document.getElementById("nav-" + name);
+  const mobileLink  = document.getElementById("mob-nav-" + name);
+  if (desktopLink) desktopLink.classList.add("active");
+  if (mobileLink)  mobileLink.classList.add("active");
+
   window.scrollTo(0, 0);
 }
+
 
 // ---- HAIRSTYLE DATA ----
 const hairstyles = [
