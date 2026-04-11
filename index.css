@@ -1095,12 +1095,17 @@ nav a#name {
     background: var(--bkash);
 }
 
+.pay-tab-icon .bkash-icon img{
+    width: 24px;
+    height: 24px;
+}
+
 .nagad-icon {
     background: var(--nagad);
 }
 
 /* ===== PAYMENT PANELS ===== */
-.pay-panel {}
+/* .pay-panel {} */
 
 .qr-popup-wrap {
     display: flex;

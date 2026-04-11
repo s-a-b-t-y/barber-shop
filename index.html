@@ -14,6 +14,9 @@
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="library/favicon/favicon.jpg" type="image/x-icon">
+
+  <!-- icon CDN Link -->
+  <link rel="stylesheet" href="https://use.hugeicons.com/font/icons.css">
 </head>
 
 <body>
@@ -278,13 +281,13 @@
           <!-- Payment Method Tabs -->
           <div class="pay-tab-bar">
             <button class="pay-tab active" id="tab-bkash" onclick="switchPayTab('bkash')">
-              <span class="pay-tab-icon bkash-icon">b</span> bKash
+              <span class="pay-tab-icon bkash-icon"><img src="library/paymentLogo/bkash.jpg" alt="bkashLogo"></span> bKash
             </button>
             <button class="pay-tab" id="tab-nagad" onclick="switchPayTab('nagad')">
-              <span class="pay-tab-icon nagad-icon">N</span> Nagad
+              <span class="pay-tab-icon nagad-icon"><img src="library/paymentLogo/nagad.jpg" alt="nagadLogo"></span> Nagad
             </button>
             <button class="pay-tab skip-tab" id="tab-skip" onclick="switchPayTab('skip')">
-              ✕ Skip
+              <i class="hgi hgi-stroke hgi-cancel-circle"></i> Skip
             </button>
           </div>
 
