@@ -68,18 +68,18 @@ function showPage(name) {
 
 // ---- HAIRSTYLE DATA ----
 const hairstyles = [
-  { name: "Classic Side Part", category: "classic", price: "৳100", duration: "30 min", desc: "Timeless gentleman's cut with a clean side part.", img: "hs-classic-sidepart.jpg" },
-  { name: "High Skin Fade", category: "fade", price: "৳200", duration: "40 min", desc: "Zero to skin fade with crisp line-up.", img: "hs-highfade.jpg" },
-  { name: "Low Taper Fade", category: "fade", price: "৳180", duration: "35 min", desc: "Subtle taper that blends naturally.", img: "hs-lowtaper.jpg" },
-  { name: "Textured Crop", category: "modern", price: "৳190", duration: "35 min", desc: "Modern disconnected undercut with textured top.", img: "hs-crop.jpg" },
-  { name: "Pompadour Fade", category: "modern", price: "৳220", duration: "45 min", desc: "Voluminous top styled back with faded sides.", img: "hs-pompadour.jpg" },
-  { name: "Buzz Cut", category: "classic", price: "৳100", duration: "20 min", desc: "Clean all-around clipped cut for a sharp look.", img: "hs-buzzcut.jpg" },
-  { name: "Quiff Style", category: "modern", price: "৳200", duration: "40 min", desc: "Swept-up front volume with tapered sides.", img: "hs-quiff.jpg" },
-  { name: "Full Beard Shape", category: "beard", price: "৳150", duration: "30 min", desc: "Full beard trim, line-up, and oil treatment.", img: "hs-beard.jpg" },
-  { name: "Undercut Design", category: "modern", price: "৳250", duration: "50 min", desc: "Sharp undercut with custom design on sides.", img: "hs-undercut.jpg" },
-  { name: "French Crop", category: "classic", price: "৳160", duration: "30 min", desc: "Fringe forward, clean sides, structured top.", img: "hs-frenchcrop.jpg" },
-  { name: "Mid Fade + Beard", category: "beard", price: "৳280", duration: "55 min", desc: "Mid fade haircut with full beard sculpt combo.", img: "hs-midfadebeard.jpg" },
-  { name: "Slick Back", category: "classic", price: "৳170", duration: "35 min", desc: "Sleek back-combed style with product finish.", img: "hs-slickback.jpg" },
+  { name: "Classic Side Part", category: "classic", price: "৳100", duration: "30 min", desc: "Timeless gentleman's cut with a clean side part.", img: "library/haircutAlbum/classic/side-part.webp" },
+  { name: "High Skin Fade", category: "fade", price: "৳200", duration: "40 min", desc: "Zero to skin fade with crisp line-up.", img: "library/haircutAlbum/Fade/high-skin-fade.webp" },
+  { name: "Low Taper Fade Over Combo", category: "fade", price: "৳180", duration: "35 min", desc: "Subtle taper that blends naturally.", img: "library/haircutAlbum/Fade/low-taper-fade-over.webp" },
+  { name: "High Fade Textured Crop", category: "modern", price: "৳190", duration: "35 min", desc: "Modern disconnected undercut with textured top.", img: "library/haircutAlbum/Modern/high-fade-textured-crop.webp" },
+  { name: "Pompadour Fade", category: "modern", price: "৳220", duration: "45 min", desc: "Voluminous top styled back with faded sides.", img: "library/haircutAlbum/Modern/pompadour-fade.jpg" },
+  { name: "Buzz Cut", category: "classic", price: "৳100", duration: "20 min", desc: "Clean all-around clipped cut for a sharp look.", img: "library/haircutAlbum/classic/buzz.webp" },
+  { name: "Quiff Style", category: "modern", price: "৳200", duration: "40 min", desc: "Swept-up front volume with tapered sides.", img: "library/haircutAlbum/Modern/Textured-Quiff.webp" },
+  { name: "Full Beard Shape", category: "beard", price: "৳150", duration: "30 min", desc: "Full beard trim, line-up, and oil treatment.", img: "library/haircutAlbum/Beard/full-beard-shape.webp" },
+  { name: "Undercut Design", category: "modern", price: "৳250", duration: "50 min", desc: "Sharp undercut with custom design on sides.", img: "library/haircutAlbum/Modern/undercut-haircut.webp" },
+  { name: "French Crop", category: "classic", price: "৳160", duration: "30 min", desc: "Fringe forward, clean sides, structured top.", img: "library/haircutAlbum/classic/Classic-French-Crop.webp" },
+  { name: "Mid Fade + Beard", category: "beard", price: "৳280", duration: "55 min", desc: "Mid fade haircut with full beard sculpt combo.", img: "library/haircutAlbum/Beard/mid-fade-with-beard.jpg" },
+  { name: "Slick Back", category: "classic", price: "৳170", duration: "35 min", desc: "Sleek back-combed style with product finish.", img: "library/haircutAlbum/classic/slick-back.jpg" },
 ];
 
 function renderHS(filter = "all") {
