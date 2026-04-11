@@ -4,15 +4,15 @@
 
 // ---- CUSTOM CURSOR (desktop only) ----
 const cursor = document.getElementById("cursor");
-const ring   = document.getElementById("cursorRing");
+const ring = document.getElementById("cursorRing");
 
 if (cursor && ring) {
   document.addEventListener("mousemove", (e) => {
     cursor.style.left = e.clientX + "px";
-    cursor.style.top  = e.clientY + "px";
+    cursor.style.top = e.clientY + "px";
     setTimeout(() => {
       ring.style.left = e.clientX + "px";
-      ring.style.top  = e.clientY + "px";
+      ring.style.top = e.clientY + "px";
     }, 80);
   });
 }
@@ -20,17 +20,17 @@ if (cursor && ring) {
 // ---- HAMBURGER MENU ----
 function toggleMenu() {
   const overlay = document.getElementById("mobileMenuOverlay");
-  const btn     = document.getElementById("hamburger");
-  const open    = overlay.classList.toggle("open");
+  const btn = document.getElementById("hamburger");
+  const open = overlay.classList.toggle("open");
   btn.classList.toggle("open", open);
   document.body.style.overflow = open ? "hidden" : "";
 }
 
 function closeMenu() {
   const overlay = document.getElementById("mobileMenuOverlay");
-  const btn     = document.getElementById("hamburger");
+  const btn = document.getElementById("hamburger");
   if (overlay) overlay.classList.remove("open");
-  if (btn)     btn.classList.remove("open");
+  if (btn) btn.classList.remove("open");
   document.body.style.overflow = "";
 }
 
@@ -58,9 +58,9 @@ function showPage(name) {
   // Update active link in BOTH desktop nav and mobile menu
   document.querySelectorAll(".nav-links a, .mobile-menu-links a").forEach((a) => a.classList.remove("active"));
   const desktopLink = document.getElementById("nav-" + name);
-  const mobileLink  = document.getElementById("mob-nav-" + name);
+  const mobileLink = document.getElementById("mob-nav-" + name);
   if (desktopLink) desktopLink.classList.add("active");
-  if (mobileLink)  mobileLink.classList.add("active");
+  if (mobileLink) mobileLink.classList.add("active");
 
   window.scrollTo(0, 0);
 }
@@ -68,18 +68,18 @@ function showPage(name) {
 
 // ---- HAIRSTYLE DATA ----
 const hairstyles = [
-  { name: "Classic Side Part",  category: "classic", price: "৳150", duration: "30 min", desc: "Timeless gentleman's cut with a clean side part.", img: "hs-classic-sidepart.jpg" },
-  { name: "High Skin Fade",     category: "fade",    price: "৳200", duration: "40 min", desc: "Zero to skin fade with crisp line-up.", img: "hs-highfade.jpg" },
-  { name: "Low Taper Fade",     category: "fade",    price: "৳180", duration: "35 min", desc: "Subtle taper that blends naturally.", img: "hs-lowtaper.jpg" },
-  { name: "Textured Crop",      category: "modern",  price: "৳190", duration: "35 min", desc: "Modern disconnected undercut with textured top.", img: "hs-crop.jpg" },
-  { name: "Pompadour Fade",     category: "modern",  price: "৳220", duration: "45 min", desc: "Voluminous top styled back with faded sides.", img: "hs-pompadour.jpg" },
-  { name: "Buzz Cut",           category: "classic", price: "৳100", duration: "20 min", desc: "Clean all-around clipped cut for a sharp look.", img: "hs-buzzcut.jpg" },
-  { name: "Quiff Style",        category: "modern",  price: "৳200", duration: "40 min", desc: "Swept-up front volume with tapered sides.", img: "hs-quiff.jpg" },
-  { name: "Full Beard Shape",   category: "beard",   price: "৳150", duration: "30 min", desc: "Full beard trim, line-up, and oil treatment.", img: "hs-beard.jpg" },
-  { name: "Undercut Design",    category: "modern",  price: "৳250", duration: "50 min", desc: "Sharp undercut with custom design on sides.", img: "hs-undercut.jpg" },
-  { name: "French Crop",        category: "classic", price: "৳160", duration: "30 min", desc: "Fringe forward, clean sides, structured top.", img: "hs-frenchcrop.jpg" },
-  { name: "Mid Fade + Beard",   category: "beard",   price: "৳280", duration: "55 min", desc: "Mid fade haircut with full beard sculpt combo.", img: "hs-midfadebeard.jpg" },
-  { name: "Slick Back",         category: "classic", price: "৳170", duration: "35 min", desc: "Sleek back-combed style with product finish.", img: "hs-slickback.jpg" },
+  { name: "Classic Side Part", category: "classic", price: "৳100", duration: "30 min", desc: "Timeless gentleman's cut with a clean side part.", img: "hs-classic-sidepart.jpg" },
+  { name: "High Skin Fade", category: "fade", price: "৳200", duration: "40 min", desc: "Zero to skin fade with crisp line-up.", img: "hs-highfade.jpg" },
+  { name: "Low Taper Fade", category: "fade", price: "৳180", duration: "35 min", desc: "Subtle taper that blends naturally.", img: "hs-lowtaper.jpg" },
+  { name: "Textured Crop", category: "modern", price: "৳190", duration: "35 min", desc: "Modern disconnected undercut with textured top.", img: "hs-crop.jpg" },
+  { name: "Pompadour Fade", category: "modern", price: "৳220", duration: "45 min", desc: "Voluminous top styled back with faded sides.", img: "hs-pompadour.jpg" },
+  { name: "Buzz Cut", category: "classic", price: "৳100", duration: "20 min", desc: "Clean all-around clipped cut for a sharp look.", img: "hs-buzzcut.jpg" },
+  { name: "Quiff Style", category: "modern", price: "৳200", duration: "40 min", desc: "Swept-up front volume with tapered sides.", img: "hs-quiff.jpg" },
+  { name: "Full Beard Shape", category: "beard", price: "৳150", duration: "30 min", desc: "Full beard trim, line-up, and oil treatment.", img: "hs-beard.jpg" },
+  { name: "Undercut Design", category: "modern", price: "৳250", duration: "50 min", desc: "Sharp undercut with custom design on sides.", img: "hs-undercut.jpg" },
+  { name: "French Crop", category: "classic", price: "৳160", duration: "30 min", desc: "Fringe forward, clean sides, structured top.", img: "hs-frenchcrop.jpg" },
+  { name: "Mid Fade + Beard", category: "beard", price: "৳280", duration: "55 min", desc: "Mid fade haircut with full beard sculpt combo.", img: "hs-midfadebeard.jpg" },
+  { name: "Slick Back", category: "classic", price: "৳170", duration: "35 min", desc: "Sleek back-combed style with product finish.", img: "hs-slickback.jpg" },
 ];
 
 function renderHS(filter = "all") {
@@ -170,11 +170,11 @@ function showStep(stepId) {
 // ---- STEP NAVIGATION ----
 function goToPaymentStep() {
   // Validate form first
-  const name    = document.getElementById("clientName").value.trim();
-  const phone   = document.getElementById("clientPhone").value.trim();
+  const name = document.getElementById("clientName").value.trim();
+  const phone = document.getElementById("clientPhone").value.trim();
   const service = document.getElementById("serviceSelect").value;
-  const date    = document.getElementById("bookDate").value;
-  const time    = document.getElementById("bookTime").value;
+  const date = document.getElementById("bookDate").value;
+  const time = document.getElementById("bookTime").value;
 
   if (!name || !phone || !service || !date || !time) {
     showToast("⚠️ Please fill in all required fields.");
@@ -220,7 +220,7 @@ function switchPayTab(tab) {
 }
 
 function getServicePrice() {
-  const sel   = document.getElementById("serviceSelect").value;
+  const sel = document.getElementById("serviceSelect").value;
   const match = sel.match(/৳(\d+)/);
   return match ? parseInt(match[1]) : null;
 }
@@ -238,13 +238,13 @@ document.getElementById("serviceSelect").addEventListener("change", updatePayAmo
 
 // ---- MESSAGE BUILDER ----
 function buildBookingMessage() {
-  const name    = document.getElementById("clientName").value.trim()   || "(name)";
-  const phone   = document.getElementById("clientPhone").value.trim()  || "(phone)";
-  const service = document.getElementById("serviceSelect").value       || "(service)";
-  const date    = document.getElementById("bookDate").value            || "(date)";
-  const time    = document.getElementById("bookTime").value            || "(time)";
-  const note    = document.getElementById("bookNote").value.trim();
-  const price   = getServicePrice();
+  const name = document.getElementById("clientName").value.trim() || "(name)";
+  const phone = document.getElementById("clientPhone").value.trim() || "(phone)";
+  const service = document.getElementById("serviceSelect").value || "(service)";
+  const date = document.getElementById("bookDate").value || "(date)";
+  const time = document.getElementById("bookTime").value || "(time)";
+  const note = document.getElementById("bookNote").value.trim();
+  const price = getServicePrice();
 
   let payInfo = "";
 
@@ -255,7 +255,7 @@ function buildBookingMessage() {
   } else {
     const method = currentPayTab.charAt(0).toUpperCase() + currentPayTab.slice(1);
     const txInput = document.getElementById(currentPayTab + "TxId");
-    const txId    = txInput ? txInput.value.trim() : "";
+    const txId = txInput ? txInput.value.trim() : "";
 
     if (txId) {
       payInfo = price
@@ -296,9 +296,9 @@ function buildBookingMessage() {
 
 // ---- SEND TO WHATSAPP ----
 function sendToWhatsApp() {
-  const msg     = buildBookingMessage();
+  const msg = buildBookingMessage();
   const encoded = encodeURIComponent(msg);
-  const shopPhone = "8801700000000"; // ← Replace with actual WhatsApp number
+  const shopPhone = "8801620534331"; // ← Replace with actual WhatsApp number
 
   showToast("✅ Opening WhatsApp...");
   setTimeout(() => {
